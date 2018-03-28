@@ -11,11 +11,11 @@
     <title>Starter Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../public/style/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../public/style/css/bootstrap.min.css" rel="stylesheet">
 
 
     <!-- Custom styles for this template -->
-    <link href="../public/style/starter-template.css" rel="stylesheet">
+    <link href="../../public/style/css/starter-template.css" rel="stylesheet">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -42,7 +42,7 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Авторизация</a></li>
-                <li><a href="reg">Регистрация</a></li>
+                <li><a href="registration">Регистрация</a></li>
                 <li><a href="userlist">Список пользователей</a></li>
                 <li><a href="filelist">Список файлов</a></li>
             </ul>
@@ -52,30 +52,37 @@
 
 <div class="container">
     <h1>Запретная зона, доступ только авторизированному пользователю</h1>
-    <h2>Информация выводится из списка файлов</h2>
+    <h2>Информация выводится из базы данных</h2>
     <table class="table table-bordered">
         <tr>
-            <th>Название файла</th>
+            <th>Пользователь(логин)</th>
+            <th>Имя</th>
+            <th>возраст</th>
+            <th>описание</th>
             <th>Фотография</th>
             <th>Действия</th>
         </tr>
         <?php foreach ($data as $key => $item) : ?>
-            <tr>
-                <td><?= $item[1] ?></td>
-                <td><img class="image" src="../photos/<?= $item[1] ?> " alt=" <?= $item[6]
-                    ?>" width="100" height="100"> <img></td>
-                <td>
-                    <form name="ddd" action="../index.php" method="post">
-                        <input type="hidden" name="id" value="<?= $item[0] ?>">
-                        <input id="<?= $item[0] ?>"
-                               name="delete"
-                               type="submit"
-                               value="удалить картинку">
-                    </form>
-                </td>
+        <tr>
+            <td><?= $item[1] ?></td>
+            <td><?= $item[3] ?></td>
+            <td><?= $item[4] ?></td>
+            <td><?= $item[5] ?></td>
+            <td><img class="image" src="../photos/<?= $item[6] ?> " alt=" <?= $item[6]
+                ?>" width="100" height="100"> <img></td>
+            <td>
+                <form name="ddd" action="../../index.php" method="post">
+                    <input type="hidden" name="id" value="<?= $item[0] ?>">
+                    <input type="hidden" name="pic" value="<?= $item[6] ?>">
+                    <input id="<?= $item[0] ?>"
+                           name="delete"
+                           type="submit"
+                           value="удалить пользователя">
+                </form>
 
-            </tr>
-        <?php endforeach; ?>
+            </td>
+            <?php endforeach; ?>
+        </tr>
     </table>
 
 </div><!-- /.container -->
@@ -85,8 +92,8 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../public/js/main.js"></script>
-<script src="../public/js/bootstrap.min.js"></script>
+<script src="../../public/js/main.js"></script>
+<script src="../../public/js/bootstrap.min.js"></script>
 
 </body>
 </html>

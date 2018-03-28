@@ -1,6 +1,6 @@
 <?php
 
-namespace core;
+namespace App\core;
 
 class Auth
 {
@@ -8,7 +8,7 @@ class Auth
 
     public function isAuth()
     {
-        return (!empty($_SESSION[self::INDEX]));
+       return (!empty($_SESSION[self::INDEX]));
     }
 
     public function getUser()
@@ -24,6 +24,8 @@ class Auth
             throw new Exception();
         }
         $_SESSION[self::INDEX] = $userId;
+        var_dump($_SESSION[self::INDEX]);
+
     }
 
     public function logout()

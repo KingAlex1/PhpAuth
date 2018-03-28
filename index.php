@@ -2,20 +2,15 @@
 error_reporting(E_ALL);
 session_start();
 
-require_once "controllers/registr.php";
-require_once "core/MainController.php";
-require_once "core/View.php";
+require __DIR__."/vendor/autoload.php";
 
-use App\Registr;
-use core\request;
+use App\controllers\UserController;
+use App\core\request;
 
-function __autoload($classname)
-{
+function __autoload($classname) {
     include_once __DIR__ . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $classname) . '.php';
+
 }
-
-
-
 $routes = explode('/', $_SERVER['REQUEST_URI']);
 
 if ($_POST) {
@@ -25,22 +20,22 @@ if ($_POST) {
 
     if (isset($_POST['delete'])){
 
-        $controller = new Registr($request);
+        $controller = new UserController($request);
         $controller->deleteUser();
     }
 
     if (isset($_POST['log'])&& isset($_POST['pass'])){
 
-        $controller = new Registr($request);
+        $controller = new UserController($request);
         $controller->signIn();
     }
 
-    $controller = new Registr($request);
+    $controller = new UserController($request);
     $controller->addUser();
 
 }
 
-$controllerName = "auth";
+$controllerName = "Authorization";
 $actionName = "index";
 
 if (!empty($routes[1])) {
@@ -51,7 +46,7 @@ if (!empty($routes[2])) {
     $actionName = $routes[2];
 }
 
-$fileName = "controllers/" . strtolower($controllerName) . ".php";
+$fileName = "App/controllers/" . ucfirst($controllerName) . ".php";
 
 try {
     if (file_exists($fileName)) {
@@ -61,7 +56,7 @@ try {
         throw new Exception("File not found");
     }
 
-    $className = "\App\\" . ucfirst($controllerName);
+    $className = "\App\\controllers\\" . ucfirst($controllerName);
 
     if (class_exists($className)) {
         $controller = new $className;
@@ -75,7 +70,7 @@ try {
         throw new Exception("Method not found");
     }
 } catch (Exception $e) {
-    require "core/errors/404.php";
+    require "App/core/errors/404.php";
 }
 
 

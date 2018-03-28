@@ -1,9 +1,9 @@
 <?php
 
-namespace models;
+namespace App\models;
 
-use core\DBDriver;
-use core\Validation;
+use App\core\DBDriver;
+use App\core\Validation;
 
 class Registration
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace App;
+namespace App\controllers;
 
-use core\DBConnector;
-use core\DBDriver;
-use models\registration;
-use core\Request;
-use core\validation;
-use core\Auth;
+use App\core\DBConnector;
+use App\core\DBDriver;
+use App\core\Request;
+use App\core\validation;
+use App\core\Auth;
+use App\models\registration;
 
-class Registr
+class UserController
 {
     public $request;
 
@@ -37,10 +37,11 @@ class Registr
             'photo' => $this->request->post('image')
         ]);
 
-        $_SESSION = session_id();
-        if ($_SESSION == true && $user == true) {
-            header('location:/userlist');
-        }
+//      Авторизация
+        $serviceAuth = new Auth();
+        $serviceAuth->login($user['id']);
+        //  print_r($user['id']);
+        header('location:/userlist');
     }
 
     public function deleteUser()
@@ -73,6 +74,7 @@ class Registr
 //      Авторизация
         $serviceAuth = new Auth();
         $serviceAuth->login($user['id']);
+      //  print_r($user['id']);
         header('location:/userlist');
     }
 }

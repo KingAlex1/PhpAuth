@@ -1,6 +1,11 @@
 <?php
 
-namespace core;
+namespace App\core;
+
+
+
+
+
 
 class DBDriver
 {

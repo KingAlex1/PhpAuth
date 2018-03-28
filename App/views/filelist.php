@@ -11,11 +11,11 @@
     <title>Starter Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../public/style/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../public/style/css/bootstrap.min.css" rel="stylesheet">
 
 
     <!-- Custom styles for this template -->
-    <link href="../public/style/css/starter-template.css" rel="stylesheet">
+    <link href="../../public/style/starter-template.css" rel="stylesheet">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -42,7 +42,7 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Авторизация</a></li>
-                <li><a href="reg">Регистрация</a></li>
+                <li><a href="registration">Регистрация</a></li>
                 <li><a href="userlist">Список пользователей</a></li>
                 <li><a href="filelist">Список файлов</a></li>
             </ul>
@@ -51,33 +51,32 @@
 </nav>
 
 <div class="container">
+    <h1>Запретная зона, доступ только авторизированному пользователю</h1>
+    <h2>Информация выводится из списка файлов</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>Название файла</th>
+            <th>Фотография</th>
+            <th>Действия</th>
+        </tr>
+        <?php foreach ($data as $key => $item) : ?>
+            <tr>
+                <td><?= $item[1] ?></td>
+                <td><img class="image" src="../photos/<?= $item[1] ?> " alt=" <?= $item[6]
+                    ?>" width="100" height="100"> <img></td>
+                <td>
+                    <form name="ddd" action="../../index.php" method="post">
+                        <input type="hidden" name="id" value="<?= $item[0] ?>">
+                        <input id="<?= $item[0] ?>"
+                               name="delete"
+                               type="submit"
+                               value="удалить картинку">
+                    </form>
+                </td>
 
-    <div class="form-container">
-        <form class="form-horizontal" action="../index.php" method="post">
-            <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">Логин</label>
-                <div class="col-sm-10">
-                    <input type="text" name="log" class="form-control" id="inputEmail3"
-                           placeholder="Логин">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Пароль</label>
-                <div class="col-sm-10">
-                    <input type="password" name="pass" class="form-control"
-                           id="inputPassword3"
-                           placeholder="Пароль">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Войти</button>
-                    <br><br>
-                    Нет аккаунта? <a href="reg">Зарегистрируйтесь</a>
-                </div>
-            </div>
-        </form>
-    </div>
+            </tr>
+        <?php endforeach; ?>
+    </table>
 
 </div><!-- /.container -->
 
@@ -86,8 +85,8 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../public/js/main.js"></script>
-<script src="../public/js/bootstrap.min.js"></script>
+<script src="../../public/js/main.js"></script>
+<script src="../../public/js/bootstrap.min.js"></script>
 
 </body>
 </html>

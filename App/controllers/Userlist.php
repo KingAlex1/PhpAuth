@@ -1,17 +1,19 @@
 <?php
 
-namespace App;
+namespace App\controllers;
 
-use core\DBConnector;
-use core\DBDriver;
-use models\registration;
-use core\validation;
-use core\Auth;
+use App\core\Auth;
+use App\core\DBConnector;
+use App\core\DBDriver;
+use App\core\validation;
+use App\core\MainController;
+use App\models\registration;
 
 class UserList extends MainController
 {
     public function index()
     {
+
         $auth = new Auth();
         if (!$auth->isAuth()) {
             header('location:/');
