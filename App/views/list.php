@@ -64,17 +64,19 @@
         </tr>
         <?php foreach ($data as $key => $item) : ?>
         <tr>
-            <td><?= $item[1] ?></td>
-            <td><?= $item[3] ?></td>
-            <td><?= $item[4] ?></td>
-            <td><?= $item[5] ?></td>
-            <td><img class="image" src="../photos/<?= $item[6] ?> " alt=" <?= $item[6]
+
+            <td><?= $item['login'] ?></td>
+            <td><?= $item['name'] ?></td>
+            <td><?= $item['age'] ?></td>
+            <td><?= $item['description'] ?></td>
+            <td><img class="image" src="../photos/<?= $item['photo'] ?> " alt=" <?=
+                $item['photo']
                 ?>" width="100" height="100"> <img></td>
             <td>
                 <form name="ddd" action="../../index.php" method="post">
-                    <input type="hidden" name="id" value="<?= $item[0] ?>">
-                    <input type="hidden" name="pic" value="<?= $item[6] ?>">
-                    <input id="<?= $item[0] ?>"
+                    <input type="hidden" name="id" value="<?= $item['id'] ?>">
+                    <input type="hidden" name="pic" value="<?= $item['photo'] ?>">
+                    <input id="<?= $item['id'] ?>"
                            name="delete"
                            type="submit"
                            value="удалить пользователя">

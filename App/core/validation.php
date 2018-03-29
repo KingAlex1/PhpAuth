@@ -4,7 +4,7 @@ namespace App\core;
 
 class Validation
 {
-    public function checkData(Array $obj)
+    public static function checkData(Array $obj)
     {
         foreach ($obj as $key => $value) {
             if ($key != 'photo') {

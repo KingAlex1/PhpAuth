@@ -61,13 +61,15 @@
         </tr>
         <?php foreach ($data as $key => $item) : ?>
             <tr>
-                <td><?= $item[1] ?></td>
-                <td><img class="image" src="../photos/<?= $item[1] ?> " alt=" <?= $item[6]
+
+                <td><?= $item['photo'] ?></td>
+                <td><img class="image" src="../photos/<?= $item['photo'] ?> " alt=" <?=
+                    $item['photo']
                     ?>" width="100" height="100"> <img></td>
                 <td>
                     <form name="ddd" action="../../index.php" method="post">
-                        <input type="hidden" name="id" value="<?= $item[0] ?>">
-                        <input id="<?= $item[0] ?>"
+                        <input type="hidden" name="id" value="<?= $item['id'] ?>">
+                        <input id="<?= $item['id'] ?>"
                                name="delete"
                                type="submit"
                                value="удалить картинку">
