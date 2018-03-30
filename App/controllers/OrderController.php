@@ -35,16 +35,16 @@ class OrderController
         header('location:/orders');
     }
 
-//    public function deleteUser()
-//    {
-//        $user = User::find($this->request->post('id'));
-//        $delUser = $user->delete();
-//        $delPic = $this->request->post('pic');
-//        print_r($delPic);
-//        unlink("photos/$delPic");
-//        if ($delUser) {
-//            header('location:/userlist');
-//        }
-//    }
-//
+    public function deleteOrder()
+    {
+        $order = Order::find($this->request->post('id'));
+        $delOrder = $order->delete();
+        $delPic = $this->request->post('pic');
+        print_r($delPic);
+        unlink("photos/$delPic");
+        if ($delOrder) {
+            header('location:/orders');
+        }
+    }
+
 }

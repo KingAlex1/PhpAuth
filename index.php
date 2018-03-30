@@ -43,7 +43,10 @@ if ($_POST) {
         $controller = new UserController($request);
         $controller->addUser();
     }
-
+    if (isset($_POST['del'])) {
+        $controller = new OrderController($request);
+        $controller->deleteOrder();
+    }
 
 
 }

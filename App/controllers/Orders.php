@@ -10,6 +10,7 @@ use App\models\User;
 
 class Orders extends MainController
 {
+
     public function index()
     {
         $auth = new Auth();

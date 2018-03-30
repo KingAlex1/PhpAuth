@@ -12,7 +12,7 @@ Capsule::schema()->create('orders', function (Blueprint $table) {
     $table->integer('user_id')->nullable();
     $table->string('adress'); //varchar 255
     $table->string('phone'); //varchar 255
-    $table->string('mail'); //varchar 255
+    $table->string('mail')->unique(); //varchar 255
     $table->string('good'); //varchar 255
     $table->string('photo'); //varchar 255
     $table->string('desc'); //varchar 255

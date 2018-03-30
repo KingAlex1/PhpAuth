@@ -154,13 +154,13 @@
                                  alt=" <?=$val['photo'] ?>" width="100" height="100"> <img></td>
                         <td>
                             <form name="ddd" action="../../index.php" method="post">
-                                <input type="hidden" name="id" value="<?= $item['id'] ?>">
+                                <input type="hidden" name="id" value="<?= $val['id'] ?>">
                                 <input type="hidden" name="pic"
                                        value="<?= $val['photo'] ?>">
-                                <input id="<?= $item['id'] ?>"
-                                       name="delete"
+                                <input id="<?= $val['id'] ?>"
+                                       name="del"
                                        type="submit"
-                                       value="удалить пользователя">
+                                       value="удалить заказ">
                             </form>
                         </td>
                     </tr>
