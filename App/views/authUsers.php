@@ -45,6 +45,8 @@
                 <li><a href="registration">Регистрация</a></li>
                 <li><a href="userlist">Список пользователей</a></li>
                 <li><a href="filelist">Список файлов</a></li>
+                <li><a href="orders">Заказы</a></li>
+
             </ul>
         </div><!--/.nav-collapse -->
     </div>

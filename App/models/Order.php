@@ -1,8 +1,6 @@
 <?php
 
 namespace App\models;
-use App\models\Order;
-require_once 'Order.php';
 require __DIR__ . "/../../vendor/autoload.php";
 
 use Illuminate\Database\Capsule\Manager as Capsule;
@@ -23,51 +21,10 @@ $capsule->addConnection([
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
-class User extends Model
+class Order extends Model
 {
     public $timestamps = false;
     protected $guarded = ['id'];
-    public $table = 'users';
+    public $table = 'orders';
 
-    public function orders()
-    {
-        return $this->hasMany('App\models\Order', 'user_id', 'id');
-    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

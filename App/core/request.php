@@ -32,6 +32,18 @@ class Request
         return $this->getArr($this->post, $key);
     }
 
+    public function session($key = null)
+    {
+        return $this->getArr($this->session, $key);
+    }
+
+    public function file($key = null)
+    {
+        $arr = $this->getArr($this->file, $key);
+
+        return $arr['name'];
+    }
+
     private function getArr(array $arr, $key = null)
     {
         if (!$key) {

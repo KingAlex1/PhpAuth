@@ -24,15 +24,21 @@ class UserController
 
     public function addUser()
     {
-   //     $clearData = Validation::checkData()
-        $user = User::create([
-            'login' => $this->request->post('login'),
-            'password' => $this->getHash($this->request->post('password')),
-            'name' => $this->request->post('name'),
-            'age' => $this->request->post('age') ?? 'noAge',
-            'description' => $this->request->post('description') ?? 'noDescription',
-            'photo' => $this->request->post('image') ?? 'noPhoto'
-        ]);
+        try {
+            $clearData = Validation::checkData([
+                'login' => $this->request->post('login'),
+                'password' => $this->getHash($this->request->post('password')),
+                'name' => $this->request->post('name'),
+                'age' => $this->request->post('age') ?? 'noAge',
+                'description' => $this->request->post('description') ?? 'noDescription',
+                'photo' => $this->request->post('image')
+            ]);
+
+        $user = User::create($clearData);
+        } catch (\Exception $e) {
+            echo "Введите корректные данные" . $e->getMessage()  ;
+        }
+
 //      Авторизация
         $serviceAuth = new Auth();
         $serviceAuth->login($user['id']);
@@ -55,7 +61,8 @@ class UserController
     {
         $login = User::all()->where('login', '=', $this->request->post('log'));
         $user = array_pop($login->toArray());
-
+        print_r("<pre>");
+        print_r($_SESSION);
         if (!$user) {
             echo "Не верный Логин!";
             return false;

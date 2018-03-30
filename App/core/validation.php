@@ -11,7 +11,10 @@ class Validation
                 $clear[$key] = strip_tags(trim($value));
             } elseif (preg_match('/jpg/', $_FILES['image']['name'])  //jpg.php
                 or preg_match('/png/', $_FILES['image']['name'])
+                or preg_match('/jpeg/', $_FILES['image']['name'])
                 or preg_match('/gif/', $_FILES['image']['name'])) {
+                echo 'sdfsdfsd';
+
                 //Проверяем имя файла. У нас PNG - файл проходит
                 if (preg_match('/jpg/', $_FILES['image']['type'])
                     or preg_match('/png/', $_FILES['image']['type'])
